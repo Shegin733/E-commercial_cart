@@ -1,0 +1,217 @@
+{% extends 'base.html' %}
+{% load static %}
+{% block content %}
+<html>
+    <head><link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css"><style>@media (min-width: 1025px) {
+    .h-custom {
+    height: 100vh !important;
+    }
+    }
+
+
+    .number-input input[type="number"] {
+    -webkit-appearance: textfield;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    }
+
+    .number-input input[type=number]::-webkit-inner-spin-button,
+    .number-input input[type=number]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    }
+
+    .number-input button {
+    -webkit-appearance: none;
+    background-color: transparent;
+    border: none;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    margin: 0;
+    position: relative;
+    }
+
+    .number-input button:before,
+    .number-input button:after {
+    display: inline-block;
+    position: absolute;
+    content: '';
+    height: 2px;
+    transform: translate(-50%, -50%);
+    }
+
+    .number-input button.plus:after {
+    transform: translate(-50%, -50%) rotate(90deg);
+    }
+
+    .number-input input[type=number] {
+    text-align: center;
+    }
+
+    .number-input.number-input {
+    border: 1px solid #ced4da;
+    width: 10rem;
+    border-radius: .25rem;
+    }
+
+    .number-input.number-input button {
+    width: 2.6rem;
+    height: .7rem;
+    }
+
+    .number-input.number-input button.minus {
+    padding-left: 10px;
+    }
+
+    .number-input.number-input button:before,
+    .number-input.number-input button:after {
+    width: .7rem;
+    background-color: #495057;
+    }
+
+    .number-input.number-input input[type=number] {
+    max-width: 4rem;
+    padding: .5rem;
+    border: 1px solid #ced4da;
+    border-width: 0 1px;
+    font-size: 1rem;
+    height: 2rem;
+    color: #495057;
+    }
+
+    @media not all and (min-resolution:.001dpcm) {
+    @supports (-webkit-appearance: none) and (stroke-color:transparent) {
+
+    .number-input.def-number-input.safari_only button:before,
+    .number-input.def-number-input.safari_only button:after {
+    margin-top: -.3rem;
+    display: inline-block;
+    }
+    }
+    }
+
+    .shopping-cart .def-number-input.number-input {
+    border: none;
+    }
+
+    .shopping-cart .def-number-input.number-input input[type=number] {
+    max-width: 2rem;
+    border: none;
+    }
+
+    .shopping-cart .def-number-input.number-input input[type=number].black-text,
+    .shopping-cart .def-number-input.number-input input.btn.btn-link[type=number],
+    .shopping-cart .def-number-input.number-input input.md-toast-close-button[type=number]:hover,
+    .shopping-cart .def-number-input.number-input input.md-toast-close-button[type=number]:focus {
+    color: #212529 !important;
+    }
+
+    .shopping-cart .def-number-input.number-input button {
+    width: 1rem;
+    }
+
+    .shopping-cart .def-number-input.number-input button:before,
+    .shopping-cart .def-number-input.number-input button:after {
+    width: .5rem;
+    display: inline-block;
+    }
+
+    .shopping-cart .def-number-input.number-input button.minus:before,
+    .shopping-cart .def-number-input.number-input button.minus:after {
+   background-color:rgb(224, 110, 57);
+    }
+
+    .shopping-cart .def-number-input.number-input button.plus:before,
+    .shopping-cart .def-number-input.number-input button.plus:after {
+    background-color: #4285f4;
+    }
+    *{
+    background-color:rgb(34, 38, 38);
+    }
+    .center{
+    background-color: #872a0991;
+        position:absolute;
+        width:100%;
+
+        padding-left: 35px;
+       display:inline;
+
+      }
+.ulupp{
+  display: inline-flex;
+}
+.text{
+  line-height: 5px;
+  display:inline-flex;
+}
+    </style></head>
+    <body>
+
+        <section class="h-100 h-custom" style="background-color: #eee;">
+            <div class="container h-100 py-5">
+              <div class="row d-flex justify-content-center align-items-center h-100">
+                <div class="col">
+                  <div class="card shopping-cart" style="border-radius: 15px;">
+                    <div class="card-body text-black">
+          
+                      <div class="row">
+                        
+                        <div class="col-lg-6 px-5 py-4">
+          
+                          <h3 class="mb-5 pt-2 text-center fw-bold text-uppercase">Your products</h3>
+
+                          <div class="d-flex align-items-center mb-5">
+
+                            <div class="flex-shrink-0">
+
+                                <div class="center">
+                               {% for i in ci %}
+                                  <div class="text">
+                              <a href="{{i.prodt.get_url}}"><img src="{{i.prodt.img.url}}"
+                                class="img-fluid" style="height:100px;width:100px;" alt="{{i.prodt.name}}"></a>
+                            
+                            <div class="flex-grow-1 ms-3">
+                                
+                              <a href="#!" class="float-end text-black"><i class="fas fa-times"></i></a>
+
+                                <p>ID:{{i.prodt.id}}</p>
+                              <p class="text-primary">Name:{{i.prodt.name}}</p>
+
+                              <div class="d-flex align-items-center">
+                                <p class="fw-bold mb-0 me-5 pe-3">Price:{{i.total}}</p>
+                                  <p>Quantity:{{i.quan}}</p>
+                                <div class="def-number-input number-input safari_only">
+                                  <div class="ulupp">
+                                      <span><a href="{% url 'remove' i.prodt.id %}"><i class="fa fa-trash" style="font-size:14px;color:white;"></i></button></a></span>
+                                 <span> <a href="{% url 'addcart' i.prodt.id %}"><button class="btn"><i class="fa fa-plus" style="font-size:9px;color:orange;"></i></button></a>{{i.quan}}<a href="{% url 'cart_decrement' i.prodt.id %}"><button class="btn"><i class="fa fa-minus" style="font-size:9px;color:orange;"></i></button></a></span>
+
+                                  </div>
+                                  </div>
+                                </div>
+                              </div>
+                            </div><br><br>
+                                  {% endfor %}
+                                    <p>Total<span class="price" style="color:white"><b>${{t}}</b></span></p>
+                          </div>
+
+                     
+          
+                    
+          
+                          <hr class="mb-4" style="height: 2px; background-color: #1266f1; opacity: 1;">
+          
+          
+                          </form>
+          
+                        </div>
+                      </div>
+          
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </section>
+</body>
+</html>
+{% endblock %}

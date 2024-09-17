@@ -1,0 +1,60 @@
+  {% load static %}
+<html><meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+<link href="{% static 'hm/layout/styles/layout.css' %}" rel="stylesheet" type="text/css" media="all"><body>
+
+   <header id="header" class="hoc clear">
+      <div id="logo" class="fl_left">
+        <!-- ################################################################################################ -->
+        <h1><a href="home.html">AVODHA SHOPPING</a></h1>
+        <!-- ################################################################################################ -->
+      </div>
+      <nav id="mainav" class="fl_right">
+        <!-- ################################################################################################ -->
+        <ul class="clear">
+          <li class="active"><a href="home.html">Home</a></li>
+          <li><a class="active" href="#">pages</a>
+            <li><a class="active" href="{% url 'cartDetails' %}"><i class="fa fa-shopping-cart" style="font-size:9px;color:orange;background-color:black;"></i><sup style="color:orange">{{itc}}</sup></a>
+                   <li><a class="drop" href="#">Filter</a>
+            <ul>
+                </div>
+      <div class="dropdown">
+  <button onclick="myFunction()" class="dropbtn">Dropdown</button>
+      </div>
+              <li><a href="#">Level 2</a></li>
+              <li><a class="drop" href="#">Level 2 + Drop</a>
+                <ul>
+                  <li><a href="#">Level 3</a></li>
+                  <li><a href="#">Level 3</a></li>
+                  <li><a href="#">Level 3</a></li>
+                </ul>
+              </li>
+              <li><a href="#">Level 2</a></li>
+            </ul>
+          </li>
+            <ul>  <li id="searchform">
+            <div>
+              <form action="#" method="get">
+                <fieldset>
+                  <legend>Quick Search:</legend>
+                  <input type="text" placeholder="Enter Itemterm&hellip;" name="q">
+                  <button type="submit"><i class="fas fa-search"></i></button>
+                </fieldset>
+              </form>
+          </div>
+
+              <li><a href="{% static 'hm/pages/gallery.html' %}">Gallery</a></li>
+              <li><a href="{% static 'hm/pages/sidebar-left.html' %}">Sidebar Left</a></li>
+              <li><a href="{% static 'hm/pages/sidebar-right.html' %}">Sidebar Right</a></li>
+              <li><a href="{% static 'hm/pages/basic-grid.html' %}">Basic Grid</a></li>
+              <li><a href="{% static 'hm/pages/font-icons.html' %}">Font Icons</a></li>
+            </ul>
+          </li>
+
+
+      </nav>
+    </header>
+ {% block content %}
+  {% endblock %}
+  </body>
+  </html>
